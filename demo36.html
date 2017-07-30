@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo36</title>
+</head>
+<body>
+	<div id="demo">demo</div>
+</body>
+<script type="text/javascript" src="Chapter_36.js"></script>
+<!-- <script type="text/javascript" src="lib/test.js"></script> -->
+<script type="text/javascript">
+	F.module(["lib/event","lib/dom"],function(events,dom){
+		events.on("demo","click",function(){
+			dom.html("demo","success");
+		});
+	});
+</script>
+</html>

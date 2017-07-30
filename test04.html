@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test04</title>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+<script type="text/javascript">
+/*var A = function (selector){
+	return new A.fn.init(selector);
+}
+A.fn = A.prototype={
+	init:function (selector){
+		this[0] = document.getElementById(selector);
+		this.length=1;
+		console.log(this===A.fn,this ===A.prototype, this);
+		return this;
+	},
+	length:2,
+	size:function (){
+		return this.length;
+	}
+}
+var a = A("demo");
+console.log(a);*/
+// var B = function (){
+// 	function say(){console.log("func B")}
+// 	return new B.night();
+// }
+// B.prototype={
+// 	night:function (){console.log("night")}
+// }
+// var b = B();
+
+// var b = B.night();
+// function B (){
+
+// }
+// B.prototype ={
+// 	constructor:B,
+// 	night:function (){
+// 		console.log("night");
+// 	}
+// }
+// var b = new B();
+// console.log(b.__proto__);
+// var name = "Doe, John";
+// console.log(name.replace(/(\w+)\s*, \s*(\w+)/, "$2 $1"));
+function CamelCase(str){
+	return str.replace(/\-(\w)/g,function (all,letter){
+		console.log("all "+all);
+		console.log("letter "+letter);
+		return letter.toUpperCase();
+	})
+}
+/*CamelCase('border-color');	
+element.addEventListener("click",func,false);
+element.attachEvent("on"+"click",func);
+element['on'+'click']=func;
+element.currentStyle["color"];
+// element.getComputedStyle['color']
+getComputedStyle(element,false)['color']*/
+// console.log(Object.prototype.toString.call({}));
+// event.preventDefault();
+// event.stopPropagation()
+// returnValue=false;
+// cancelBubble = true;
+// event.preventDefault();
+// event.stopPropagation();
+// opacity:1.0;
+// opacity:alpha(opacity=100)
+// 获取浏览器视口大小
+function getInner(){
+	if (typeof window.innerWidth !="undefined") {
+		return {
+			width:window.innerWidth,
+			height:window.innerHeight
+		}
+	}else{
+		return {
+			width:document.documentElement.clientWidth,
+			height:document.documentElement.clientHeight;
+		}
+	}
+}
+// 夸浏览器获取style
+function getStyle(element,attr){
+	var value;
+	if (typeof window.getComputedStyle !="undefined") {
+		value = window.getComputedStyle(element,null)[attr];
+	}else if(typeof element.currentStyle !="undefined"){
+		value = element.currentStyle[attr];
+	}
+	return value;
+}
+// 判断class是否存在
+function hasClass(element,className){
+	return element.className.match(new RegExp("(\\s|^)"+className+"(\\s|$)"));
+}
+// 添加link
+function insertRule(sheet,selectorText,cssText,position){
+	if (typeof sheet.insertRule !="undefined") {
+		sheet.insertRule(selectorTExt+"{"+cssText+"}",position)
+	}else if(typeof sheet.addRule !="undefined"){
+		sheet.addRule(selectorText,cssText,position);
+	}
+}
+// 删除link
+function deleteRule(sheet,index){
+	if (typeof sheet.deleteRule !="undefined") {
+		sheet.deleteRule(index);
+	}else if(typeof sheet.removeRule !="undefined"){
+		sheet.removeRule(index);
+	}
+}
+// 夸刘拉你获取innerText
+function getInnerText(element){
+	return(typeof element.textContent =="string")?element.textContent:element.innerText;
+}
+// 设置innerText
+function setInnerText(element,text){
+	if (typeof element.textContent =="string") {
+		element.textConent = text;
+	}else{
+		element.innerText = text;
+	}
+}
+function getEvent(event){
+	return event || window.event;
+}
+
+// 添加事件
+function addEvent(obj,type,fn){
+	if (typeof obj.addEventListener !="undefined") {
+		obj.addEventListener(type,fn,false);
+	}else{
+		// 解决的是同一事件多个监听器的添加
+		// 创建一个可以保存事件的哈希表
+		if (!obj.events) obj.events = {};
+		if (!obj.events[type]) {
+			obj.events[type]=[]
+		}
+		if (addEvent.equal(obj.events[type],fn)) return false;
+		obj.evetns[type][addEvent.ID++]=fn;
+		obj["on"+type] = addEvent.exec;
+	}
+}
+addEvent.ID = 0;
+addEvent.exec = function (){
+	var e = addEvent.fixEvent(window.event);
+	var es = this.events[e.type];
+	for(var i in es){
+		es[i].call(this,e);
+	}
+}
+addEvent.equal = function (es,fn){
+	for (var i in es){
+		if (es[i]==fn) return true;
+	}
+	return false;
+}
+// IE中常用的Event对象匹配到W3C中去
+addEvent.fixEvent = function (event){
+	event.preventDefault = addEvent.fixEvent.preventDefault;
+	event.stopPropagation = addEvent.fixEvent.stopPropagation;
+	event.target = event.srcElement;
+	return event;
+}
+// IE阻止默认行为
+addEvent.fixEvent.preventDefault = function (){
+	this.returnValue =false;
+}
+// IE阻止冒泡行为
+addEvent.fixEvent.stopPropagation = function (){
+	this.cancelBubble = true;
+}
+function removeEvent(obj.type,fn){
+	if (typeof obj.removeEventListener !="undefined") {
+		obj.removeEventListener(type,fn,false);
+	}else{
+		for(var i in obj.events[type]){
+			if (ob.events[type][i]==fn) {
+				delete obj.events[type][i];
+			}
+		}
+	}
+}
+// 获取某一个元素到最外层顶点的位置
+function offsetTop(element){
+	var top = element.offsetTop,
+		parent = element.offsetParent;
+		while(parent !=null){
+			top+=parent.offsetTop;
+			parent = parent.offsetParent;
+		}
+		return top;
+}
+// 删除左后空格
+function trim (str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+
+// 滑动条清零
+function scrollTop(){
+	document.documentElement.scrollTop=0;
+	document.body.scrollTop = 0;
+}
+/*
+// DOM加载
+function addDomLoad(fn){
+	var isRead = false;
+	var timer = null;
+	function doReady(){
+		if (timer) clearInterval(timer);
+		if(isReady) return;
+		fn();
+	}
+}*/
+
+function getScroll(){
+	return {
+		top:document.documentElement.scrollTop || document.body.scrollTop,
+		left:document.documentElement.scrollLeft || document.body.scrollLeft
+	}
+}
+detachEvent("onclick",func)
+removeEventListener("click",func,false)
+
+</script>
+</html>

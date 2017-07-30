@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo39</title>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+<script type="text/javascript" src="Chapter_36.js"></script>
+<!-- <script type="text/javascript" src="Library.js"></script> -->
+<script type="text/javascript" src="Chapter_39.js"></script>
+<!-- <script type="text/javascript">
+	window.onload=function(){
+		// 执行管理器
+		MVP.init();
+	}
+</script> -->
+<!-- 模块开发 -->
+<script type="text/javascript">
+	// 网址模块
+	F.module(['lib/MVP','lib/A'],function(MVP,$){
+		// 页面加载完成执行 
+		$(function(){
+			// 为MVP对象添加一个网址模块
+			MVP(
+					// 模块名称
+					'sites',
+					/****
+					*模块控制器
+					*@param M 数据对象层引用
+					*@param V 视图对象引用
+					*@param modeName 模块名称
+					*/
+					function(M,V,modName){
+						// 渲染模板<li><a href="#">{#text#}</a></li>
+						var tpl = V('li>a[href="#"]{@text}');
+						console.log(tpl);
+						$
+						// 创建网址模块容器
+						.create("ul",{
+							'class': 'store-nav',
+							'id': modName
+						})
+						// 向网址模块容器中插入网址模块视图
+						.html(
+							// 创建网址模块视图
+							$.formateString(tpl,M.getData(modName))
+							)
+						// 插入页面中
+						.appendTo('container');
+						// 其他交互与特效
+						// ...
+					},
+					// 模块数据
+					[
+						'聚划算',
+						'1号店',
+						'九块钱',
+						'优购网',
+						'爱淘宝',
+						'1折购'
+					]
+				);
+					// 执行管理器
+			MVP.init();
+		});
+	});
+
+</script>
+</html>

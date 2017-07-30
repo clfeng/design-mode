@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo30</title>
+	<style type="text/css">
+		.show{
+			display:block;
+		}
+		img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="icon" class="icon">
+		<ul class="icon">
+			<li class="weixin">weixin</li>
+			<li class="weibo">weibo</li>
+		</ul>
+		<div class="">
+			<img src="images/guitarist.gif" alt="" class="show">
+			<img src="images/logo.gif" alt="" class="show">
+			<span class="arrow"><em></em></span>
+		</div>
+	</div>
+</body>
+<!-- <script type="text/javascript" src="Chapter_30_2.js"></script> -->
+<script type="text/javascript">
+	function con(a){
+		console.log(this,a);
+	}
+	con.apply(null,["aaa"])
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo31_3</title>
+	<style type="text/css">
+		img{
+			height:100px;
+			display:block;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="container">
+		<img src="images/loading.gif" data-src="images/basshead.gif">
+		<img src="images/loading.gif" data-src="images/bassist.gif">
+		<img src="images/loading.gif" data-src="images/drummer.gif">
+		<img src="images/loading.gif" data-src="images/guitarist.gif">
+		<img src="images/loading.gif" data-src="images/lineup.gif">
+		<img src="images/loading.gif" data-src="images/navbar.gif">
+		<img src="images/loading.gif" data-src="images/photos/bassist.jpg">
+		<img src="images/loading.gif" data-src="images/photos/concert.jpg">
+		<img src="images/loading.gif" data-src="images/photos/crowd.jpg">
+		<img src="images/loading.gif" data-src="images/photos/guitarist.jpg">
+	</div>
+	<button id="btn">click</button>
+</body>
+<!-- <script type="text/javascript" src="Chapter_30_4.js"></script> -->
+<script type="text/javascript">
+var btn = document.getElementById("btn");
+console.log(btn.previousSibling.nodeType);
+</script>
+</html>

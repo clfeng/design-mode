@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test01</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height:100px;
+			background-color: red;
+		}
+		#demo02{
+			position: absolute;
+			background-color: green;
+			opacity: 0.5;
+			top:10px;
+			left:20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<div id="demo01">demo01</div>
+		<div id="demo02">demo02</div>
+		<div id="demo03">demo03</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var reg = /^(\w+)([^\{\}]*)?(\{([@\w]+)\})?(.*?)$/;
+	var str = "span{@text}";
+	str.replace(reg,function(match,$1,$2,$3,$4,$5){
+		console.log("match:"+match,"$1:"+$1,"$2:"+$2,"$3:"+$3,"$4:"+$4,"$5:"+$5);
+	});
+	var str = "i.nav-icon-@mode"; 
+	str.replace(reg,function(match,$1,$2,$3,$4,$5){
+		console.log("match:"+match,"$1:"+$1,"$2:"+$2,"$3:"+$3,"$4:"+$4,"$5:"+$5);
+	});
+
+	// var re = /(A?(B?(C?)))/; 
+	// str = "ABC";  
+	// re.test(str);//反向引用被存储在RegExp对象的静态属性1—1—9中  
+	// console.log(RegExp.$1+"\n"+RegExp.$2+"\n"+RegExp.$3);  
+
+</script>
+</html>

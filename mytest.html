@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mytest</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function A(){
+		this.say = function (){console.log("say")};
+		this.hello= function(){console.log("hello")};
+		return {
+			myname:function(){console.log("myname")}
+		};
+	}
+	A.prototype = {
+		constructor: A,
+		night:function(){console.log("nigth")}
+	}
+	function B (){};
+	B.prototype = A.prototype;
+	// var b=new B();
+	// b.night();
+	var a = new A();
+	console.log(a instanceof A);
+</script>
+</html>
